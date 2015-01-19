@@ -1,5 +1,3 @@
-docker run --rm -it -p 80:80 -v /home/tmp:/www/tmp -v /home/app:/www/app reangd/django:latest
-
 run mysql:
 docker run --name home-manage-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_DATABASE=db -d -v /home/tmp/www/db:/var/lib/mysql mysql:5.7.5
 
