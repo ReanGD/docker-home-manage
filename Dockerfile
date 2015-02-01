@@ -22,7 +22,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     rm /etc/auto.master && \
     ln -s /home/auto.master /etc/ && \
     \
-    mkdir -p /www/tmp /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax && \
+    mkdir -p /www/tmp/spooler /www/app /www/static/jquery /www/static/bootstrap /www/static/django_ajax && \
     echo "daemon off;" >> /etc/nginx/nginx.conf && \
     rm /etc/nginx/sites-enabled/default && \
     \
