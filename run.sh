@@ -3,6 +3,7 @@
 [ ! -f /www/app/nginx-app.conf ] && cp /home/nginx-app.conf /www/app/
 
 ln -s /www/app/nginx-app.conf /etc/nginx/sites-enabled/
+mkdir -p /www/tmp/spooler
 
 rpcbind
 /etc/init.d/autofs start
