@@ -3,12 +3,6 @@ FROM debian:jessie
 MAINTAINER ReanGD
 
 ENV DEBIAN_FRONTEND noninteractive
-ENV SRV_IP 192.168.1.8
-ENV SRV_USER admin
-ENV SRV_PASS admin
-ENV SRV_PORT 9091
-ENV SRV_DATA /mnt/data
-ENV MEDIA_DIR /media
 
 ADD * /home/
 
