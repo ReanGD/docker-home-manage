@@ -1,10 +1,15 @@
-run mysql:
-docker run --name home-manage-db -e MYSQL_ROOT_PASSWORD=root -e MYSQL_USER=admin -e MYSQL_PASSWORD=admin -e MYSQL_DATABASE=db -d -v /home/tmp/www/db:/var/lib/mysql mysql:5.7.5
+run postgres:
+docker run --name home-manage-db -d -v /home/tmp/www/db:/var/lib/postgresql/data postgres:9.4
 
-run app:
-docker run --rm -it --link home-manage-db:db --privileged -p 80:80 -v /home/tmp:/www/tmp -v /home/app:/www/app reangd/home-manage:latest /bin/bash
+run store:
+docker run --name store-media -v /home/tmp/www/media:/media busybox:latest
+
+install app:
+git clone git@github.com:ReanGD/web-home-manage.git /home/tmp/www/git
+docker run --rm -it --link home-manage-db:db --privileged -p 80:80 -v /home/tmp/www/tmp:/www/tmp -v /home/tmp/www/git:/www/app --volumes-from store-media reangd/home-manage:latest /bin/bash
 cd /www/app
 python manage.py syncdb
 exit
 
-docker run --rm -it --link home-manage-db:db --privileged -p 80:80 -v /home/tmp:/www/tmp -v /home/app:/www/app reangd/home-manage:latest
+run app:
+docker run --name home-manage -d --link home-manage-db:db --privileged -p 80:80 -v /home/tmp/www/tmp:/www/tmp -v /home/tmp/www/git:/www/app --volumes-from store-media reangd/home-manage:latest
