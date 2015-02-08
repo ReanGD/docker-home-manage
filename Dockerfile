@@ -10,7 +10,7 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && \
     echo ru_RU.UTF-8 UTF-8 >> /etc/locale.gen && \    
     \
     apt-get update && \
-    apt-get install -y --no-install-recommends locales supervisor gcc git nfs-common autofs python-minimal python-pip python-dev python-six python-transmissionrpc libpq-dev python-pygresql nginx npm && \
+    apt-get install -y --no-install-recommends locales supervisor gcc git nfs-common autofs python-minimal python-pip python-dev python-six python-transmissionrpc python-psycopg2 nginx npm && \
     apt-get install -y --no-install-recommends vim && \
     \
     rm /etc/auto.master && \
